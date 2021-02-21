@@ -16,7 +16,7 @@
 #### 대신, 멀티 스레드를 사용할 때는 공유 자원으로 인한 문제 해결을 위해 '동기화'에 신경써야 함
 
 ## 프로세스의 주소 공간
-#### 프로그램이 CPU에 의해 실행됨 -> 프로세스가 생성되고 메모리에 프로세스 주소 공간이 할당됨
+#### 프로그램이 CPU에 의해 실행됨 => 프로세스가 생성되고 메모리에 프로세스 주소 공간이 할당됨
 
 #### 프로세스 주소 공간은 코드, 데이터, 스택으로 구성
 - 코드 : 소스 코드 저장
@@ -40,3 +40,30 @@
 
 ## 인터럽트 발생 처리 과정
 ![image](https://user-images.githubusercontent.com/51224070/108592223-28bf5c00-73b0-11eb-92f5-c3bbcad5bab6.png)
+
+## Process Management
+#### 프로세스가 여러개일 때, CPU 스케줄링을 통해 관리하는 것
+#### CPU는 각 프로세스가 누군지 알아야 관리가 가능
+#### 프로세스들의 특징을 갖고 있는 것이 바로 Process Metadata
+
+#### Process Metadata
+- Process ID
+- Process Stage
+- Process Priority
+- CPU Registers
+- Owner
+- CPU Usage
+- Memory Usage
+
+#### 프로세스가 생성되면 메타데이터는 PCB에 저장됨
+
+## PCB (Process Control Block)
+#### 메타데이터를 저장하는 곳, 한 PCB 안에는 한 프로세스의 정보가 담김
+
+#### PCB가 필요한 이유
+#### CPU는 프로세스의 상태에 따라 교체 작업이 이루어짐 -> 앞으로 다시 수행할 대기 중인 프로세스에 관한 저장 값을 PCB에 저장
+
+#### PCB 관리
+#### Linked List 방식으로 관리 => 삽입, 삭제 용이
+#### 프로세스 생성시 해당 PCB 생성, 프로세스 완료시 제거
+#### 수행 중인 프로세스를 변경할 때, CPU의 레지스터 정보가 변경되는 것 => Context Switching
