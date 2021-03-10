@@ -64,3 +64,14 @@
 #### 값에 의한 호출 : 값을 복사해서 새로운 함수로 넘기는 호출 방식, 원본 값 변경 X
 #### 참조에 의한 호출 : 주소 값을 인자로 전달하는 호출 방식, 원본 값 변경 O
 ---
+
+### 기본형 타입 (Primitive Type) VS 참조형 타입 (Reference Type)
+- 기본형 타입
+  -  8개 (boolean, char, byte, short, int, long, float, double)
+  -  사용 전 반드시 선언되어야 함
+  -  비객체 타입 -> null을 가질 수 없음, null을 사용하고 싶으면 Wrapper Class 활용
+  -  스택 메모리에 저장
+- 참조형 타입
+  - 힙 메모리에 저장
+  - 빈 객체인 null을 가질 수 있음
+  - 클래스(Class) 타입, 인터페이스(Interface) 타입, 배열(Array) 타입, 열거(Enum) 타입이 있음
