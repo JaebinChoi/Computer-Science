@@ -72,3 +72,22 @@
 #### CPU가 이전의 프로세스 상태를 PCB에 보관하고, 또 다른 프로세스의 정보를 PCB에서 읽어 레지스터에 적재하는 과정
 #### 인터럽트가 발생, 실행 중인 CPU 사용 허가시간을 모두 소모, 입출력을 위해 대기해야 하는 경우 Context Switching이 발생
 #### 프로세스가 Ready -> Running, Running -> Ready, Running -> Waiting 처럼 상태 변경 시 발생
+
+## IPC (Inter Process Communication)
+  프로세스는 독립적으로 실행 => 다른 프로세스에게 영향을 받지 않는다
+  독립적 구조를 가진 프로세스 간의 통신을 해야 하는 상황 => IPC 통신
+
+## IPC 종류
+  익명 PIPE
+  Named PIPE
+  Message Queue
+  공유 메모리
+  메모리 앱
+  소켓
+
+## 스케줄링
+  CPU를 잘 사용하기 위해 프로세스를 잘 배정하기
+
+## 선점 (Preemptive) VS 비선점 (Nonpreemptive)
+  선점 : OS가 CPU의 사용권을 선점할 수 있는 경우, 강제 회수하는 경우
+  비선점 : 프로세스 종료 or I/O 등의 이벤트가 있을 때까지 실행 보장 (처리시간 예측 불가능)
