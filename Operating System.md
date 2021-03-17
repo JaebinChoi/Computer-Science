@@ -91,3 +91,15 @@
 ## 선점 (Preemptive) VS 비선점 (Nonpreemptive)
     선점 : OS가 CPU의 사용권을 선점할 수 있는 경우, 강제 회수하는 경우
     비선점 : 프로세스 종료 or I/O 등의 이벤트가 있을 때까지 실행 보장 (처리시간 예측 불가능)
+
+![image](https://user-images.githubusercontent.com/51224070/111459610-40df8c80-875e-11eb-921b-882076b54ec0.png)
+
+    선점 스케줄링 : I/O or Event Wait
+    비선점 스케줄링 : Interrupt, Scheduler Dispatch
+
+## 프로세스 상태 전이
+    승인 (Admitted) : 프로세스 생성이 가능하여 승인됨
+    스케줄러 디스패치 (Scheduler Dispatch) : 준비 상태에 있는 프로세스 중 하나를 선택하여 실행시키는 것
+    인터럽트 (Interrupt) : 예외, 입출력, 이벤트 등이 발생하여 현재 실행중인 프로세스를 준비 상태로 바꾸고, 해당 작업을 먼저 처리하는 것
+    입출력 또는 이벤트 대기 (I/O or Event Wait) : 실행중인 프로세스가 입출력이나 이벤트를 처리해야 하는 경우, 입출력/이벤트가 모두 끝날 때 까지 대기 상태로 만드는 것
+    입출력 또는 이벤트 완료 (I/O or Event Completion) : 입출력/이벤트가 끝난 프로세스를 준비 상태로 전환하여 스케줄러에 의해 선택될 수 있도록 만드는 것
