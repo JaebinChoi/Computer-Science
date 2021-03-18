@@ -103,3 +103,38 @@
     인터럽트 (Interrupt) : 예외, 입출력, 이벤트 등이 발생하여 현재 실행중인 프로세스를 준비 상태로 바꾸고, 해당 작업을 먼저 처리하는 것
     입출력 또는 이벤트 대기 (I/O or Event Wait) : 실행중인 프로세스가 입출력이나 이벤트를 처리해야 하는 경우, 입출력/이벤트가 모두 끝날 때 까지 대기 상태로 만드는 것
     입출력 또는 이벤트 완료 (I/O or Event Completion) : 입출력/이벤트가 끝난 프로세스를 준비 상태로 전환하여 스케줄러에 의해 선택될 수 있도록 만드는 것
+
+## CPU 스케줄링의 종류
+#### 비선점 스케줄링
+    1. FCFS (First Come First Service)
+        - 큐에 도착한 순서대로 CPU 할당
+        - 실행 시간이 짧은 것이 뒤로 가면 평균 대기 시간이 길어짐
+
+    2. SJF (Shortest Job First)
+        - 수행시간이 가장 짧은 작업을 먼저 수행
+        - FCFS보다 평균 대기 시간 감소, 짧은 작업에 유리
+
+#### 선점 스케줄링
+    1. Priority Scheduling
+        - 정적/동적으로 우선순위를 부여하여 우선순위가 높은 순서대로 처리
+        - 우선 순위가 낮은 프로세스는 무한정 기다리는 Starvation(기아)이 생길 수 있음
+        - Aging 방법으로 Starvation 문제 해결 가능
+
+    2. Round Robin
+        - FCFS에 의해 프로세스들이 보내지면 각 프로세스는 동일한 시간의 Time Quantum 만큼 CPU를 할당 받음
+            - Time Quantum or Time Slice : 실행의 최소 단위 시간
+        - 할당 시간 (Time Slice)가 크면 FCFS와 같게 되고, 작으면 문맥 교환 (Context Switching)이 잦아져서 오버헤드 증가
+
+    3. Multilevel-Queue (다단계 큐)
+        - 작업들을 여러 종류의 그룹으로 나누어 여러 개의 큐를 이용하는 방법
+        - 우선순위가 낮은 큐들이 실행 못하는 것을 방지하고자 각 큐마다 다른 Time Slice를 설정하는 방식
+        - 우선순위가 높은 큐는 작은 Time Slice 할당. 우선순쉬가 낮은 큐는 큰 Time Slice 할당
+
+    4. Multilevel-Feedback-Queue (다단계 피드백 큐)
+        - 다단계 큐에서 자신의 Time Slice를 다 채운 프로세스는 밑으로 내려가고, 채우지 못한 프로세스는 원래 큐 그대로
+        - 짧은 작업에 유리, 입출력 위주(Interrupt가 잦은) 작업에 우선권을 줌
+        - 처리 시간이 짧은 프로세스를 먼저 처리하기 때문에 Turnaround 평균 시간을 줄여줌
+
+## CPU 스케줄링 척도
+    Response Time : 작업이 처음 실행되기까지 걸린 시간
+    Turnaround Time : 실행 시간과 대기 시간을 모두 합한 시간, 작업 완료까지 걸린 시간
